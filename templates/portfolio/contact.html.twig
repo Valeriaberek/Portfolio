@@ -1,0 +1,155 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block stylesheets %} 
+{{ parent() }}
+    <style>
+        body {
+            font-family: 'Fjalla One', serif;
+            margin: 0;
+            padding: 0;
+            
+     
+        }
+        
+        .headline {
+            display: flex;
+            flex-direction: row; 
+            gap: 10px;
+            margin: 20px 0; 
+        }
+
+        .headline h1, .headline p {
+            margin: 0; 
+        }
+
+        .headline h1 {
+            font-size: 5rem; 
+            color: #282828;
+        }
+
+        .for-text {
+            font-size: 4rem;
+            font-weight: bold; 
+            color: #E1D5AA;
+        }
+
+        .form-control {
+            border: 1px solid black;
+            border-radius: 0; 
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px; 
+        }
+
+        .btn-primary {
+            margin-top: 15px; 
+            background-color: black;
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #d1c193;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .headline {
+                flex-direction: column; 
+                align-items: center; 
+                text-align: center; 
+            }
+
+            .headline h1, .headline p {
+                font-size: 3rem; 
+            }
+
+            .form-control {
+                font-size: 0.9rem; 
+                padding: 8px;
+            }
+
+            .btn-primary {
+                font-size: 1rem; 
+                padding: 8px 15px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .headline h1, .headline p {
+                font-size: 2rem; 
+            }
+
+            .form-control {
+                font-size: 0.8rem; 
+                padding: 6px;
+            }
+
+            .btn-primary {
+                font-size: 0.9rem; 
+                padding: 6px 10px;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.5s forwards; 
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="headline">
+        <h1>CONTACTEZ</h1>
+        <p class="for-text">-moi</p>
+    </div>
+
+    {{ form_start(contactForm, {'attr': {'novalidate': 'novalidate'}}) }}
+        <div class="form-group">
+            {{ form_label(contactForm.name) }}
+            {{ form_widget(contactForm.name, {'attr': {'class': 'form-control', 'autocomplete': 'name'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(contactForm.email) }}
+            {{ form_widget(contactForm.email, {'attr': {'class': 'form-control', 'autocomplete': 'email'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(contactForm.message) }}
+            {{ form_widget(contactForm.message, {'attr': {'class': 'form-control', 'autocomplete': 'off'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(contactForm.send, {'attr': {'class': 'btn btn-primary'}}) }}
+        </div>
+    {{ form_end(contactForm) }}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message|e('html') }}
+        </div>
+    {% endfor %}
+{% endblock %}

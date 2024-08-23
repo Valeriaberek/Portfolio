@@ -1,0 +1,309 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+    <style>
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            margin-top: 0px;
+        }
+
+        .accordion-item {
+            margin-bottom: 10px;
+            margin-top: 0px;
+        }
+
+        .accordion-header {
+    cursor: pointer;
+    padding: 10px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    position: relative;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease; 
+}
+
+.accordion-header:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+}
+
+        .accordion-header span {
+            margin-right: 15px;
+        }
+
+        .accordion-icon {
+            width: 16px;
+            height: 16px;
+            border: solid #000;
+            border-width: 2px 2px 0 0;
+            transform: rotate(45deg);
+            transition: transform 0.3s ease;
+            margin-top: 90px;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(-135deg);
+        }
+
+        .accordion-content img {
+            width: 100%;
+            height: auto;
+            pointer-events: none; 
+        }
+
+        body {
+            font-family: 'Fjalla One', serif;
+            font-weight: normal;
+        }
+
+        h1 {
+            font-family: 'Fjalla One', serif;
+            font-weight: normal;
+        }
+
+        .headline {
+            display: flex;
+            flex-direction: row;
+            gap: 0px;
+            margin: 0px 0;
+        }
+
+        .headline h1, .headline p {
+            margin: 0;
+        }
+
+        .headline h1 {
+            font-size: 7rem;
+            color: #282828;
+        }
+
+        .for-text {
+            font-size: 6rem;
+            font-weight: bold;
+            color: #E1D5AA;
+        }
+
+        @media (max-width: 768px) {
+            .accordion-header {
+                font-size: 1em;
+                padding: 8px;
+            }
+
+            .accordion-header span {
+                margin-right: 10px;
+            }
+
+            .accordion-project {
+                margin-top: 0px;
+                margin-right: 0;
+                flex-basis: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .accordion-header {
+                font-size: 0.9em;
+                padding: 6px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .accordion-header span {
+                margin-right: 5px;
+                margin-top: 0;
+            }
+
+            .accordion-project {
+                margin-top: 0px;
+                flex-basis: 100%;
+                text-align: left;
+            }
+
+            .accordion-icon {
+                position: absolute;
+                top: 0px;
+                right: 10px;
+            }
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            padding-top: 0px;
+            margin-top: 0;
+            position: relative;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .video-resized {
+            width: 100%;
+            height: auto;
+        }
+
+        .video-title {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            text-align: left;
+            z-index: 10;
+            display: inline;
+            font-size: 40px;
+        }
+
+        .close-letters {
+            font-size: 80px;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="video-container">
+        <div class="video-wrapper">
+            <video id="myVideo" class="video-resized" autoplay loop muted>
+                <source src="{{ asset('videos/video.mp4') }}" type="video/mp4">
+                Votre navigateur ne prend pas en charge la balise vidéo.
+            </video>
+            <div class="headline">
+                <div class="video-title">
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="accordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <span class="accordion-title">Street SHOP - Exercice</span>
+                <span class="accordion-date">MONTPELLIER-2024</span>
+                <span class="accordion-location">Symfony/React</span>
+                <span class="accordion-icon"></span>
+            </h2>
+            <div class="accordion-content">
+                <img src="{{ asset('images/street.png') }}" alt="Image du Projet 5">
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <span class="accordion-title">Projet Agglomération de MONTPELLIER - Exercice</span>
+                <span class="accordion-date">MONTPELLIER-2024</span>
+                <span class="accordion-location">Symfony</span>
+            </h2>
+            <div class="accordion-content">
+                <img src="{{ asset('images/aglo.png') }}" alt="Image du Projet 2">
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <span class="accordion-title">APPLICATION MOBILE - Exercice</span>
+                <span class="accordion-date">MONTPELLIER-2023</span>
+                <span class="accordion-location">FLUTTER</span>
+            </h2>
+            <div class="accordion-content">
+                <img src="{{ asset('images/pizz.png') }}" alt="Image du Projet 3">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const items = document.querySelectorAll('.accordion-item');
+            const offset = window.innerHeight / 1;
+
+            function checkVisibility() {
+                const scrollTop = window.scrollY;
+
+                items.forEach(item => {
+                    const rect = item.getBoundingClientRect();
+                    if (rect.top + scrollTop < scrollTop + offset && rect.bottom + scrollTop > scrollTop - offset) {
+                        item.querySelector('.accordion-content').style.maxHeight = item.querySelector('.accordion-content').scrollHeight + 'px';
+                        item.classList.add('active');
+                    } else {
+                        item.querySelector('.accordion-content').style.maxHeight = '0';
+                        item.classList.remove('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', checkVisibility);
+            checkVisibility();
+
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    const item = this.parentElement;
+                    const isActive = item.classList.contains('active');
+
+                    items.forEach(i => {
+                        if (i !== item) {
+                            i.classList.remove('active');
+                            i.querySelector('.accordion-content').style.maxHeight = '0';
+                        }
+                    });
+
+                    if (!isActive) {
+                        item.classList.add('active');
+                        item.querySelector('.accordion-content').style.maxHeight = item.querySelector('.accordion-content').scrollHeight + 'px';
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var video = document.getElementById('myVideo');
+            video.playbackRate = 0.5;
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+    const images = document.querySelectorAll('.accordion-content img');
+    images.forEach(img => {
+        img.addEventListener('click', function (event) {
+            event.preventDefault(); 
+            event.stopPropagation(); 
+        });
+    });
+});
+
+    </script>
+{% endblock %}

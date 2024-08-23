@@ -1,0 +1,411 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+    
+        body {
+    background-color: white; 
+    font-family: 'Fjalla One', serif;
+    
+    padding: 0;
+    margin-bottom: 0px;
+    color: black; 
+}
+
+.social-icons {
+    display: flex;
+    gap: 25px; 
+}
+
+.social-icons a {
+    color: black; 
+    font-size: 34px; 
+    text-decoration: none; 
+}
+
+.text {
+    font-family: "Poiret One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.me {
+    font-family: 'Fjalla One', serif;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 30px;
+    font-size: 30px;
+    color: black; 
+}
+
+.headline-container.show-text {
+    opacity: 1;
+}
+
+.headline-container h1, .headline-container p {
+    margin: 0;
+    color: black;
+}
+
+.headline-container h1 {
+    font-size: 3rem;
+    color: black;
+}
+
+.headline-container p {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #E1D5AA;
+}
+
+.text-block {
+    font-size: 1rem;
+    padding: 20px;
+    background-color: white; 
+    color: black; 
+}
+
+.text-block p {
+    margin: 0;
+}
+
+.text-block span {
+    display: inline-block;
+    font-weight: normal;
+    color: #E1D5AA;
+    transition: color 0.3s ease, background 0.3s ease;
+}
+
+.text-block span.highlight1 {
+    font-family: 'Fjalla One', serif;
+    font-weight: bold;
+    color: black; 
+}
+
+.text-block span.highlight2 {
+    font-family: 'Pinyon Script', sans-serif;
+    color:  #E1D5AA;
+    font-size: 40px;
+}
+
+.headline {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    margin: 0;
+}
+
+.headline h1, .headline p {
+    margin: 0;
+    color: black; 
+}
+
+.headline h1 {
+    font-size: 4rem;
+    color:black;
+}
+
+.for-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #E1D5AA!important;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.image-container img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: black; 
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 
+        0 2px 4px rgba(255, 255, 255, 0.2),
+        0 4px 8px rgba(255, 255, 255, 0.2),
+        0 8px 16px rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 4px 8px rgba(255, 255, 255, 0.4),
+        0 8px 16px rgba(255, 255, 255, 0.4),
+        0 16px 32px rgba(255, 255, 255, 0.4);
+}
+
+.card img {
+    width: 100px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-size: 1rem;
+    color: black; 
+    text-align: center;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.close-letters {
+    letter-spacing: -0.03em;
+}
+
+@media (max-width: 768px) {
+    .headline {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 5rem;
+        gap: 2px;
+    }
+
+    body {
+        margin-bottom: 50px;
+    }
+
+    .headline h1, .headline p {
+        font-size: 1rem;
+    }
+
+    .image-container img {
+        height: 300px;
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    .headline-container  {
+        font-size: 0.9rem;
+        padding: 15px;
+    }
+.text-block span.highlight2 {
+    font-family: 'Pinyon Script', sans-serif;
+    color:  #E1D5AA;
+    font-size: 20px;
+    gap: 5;
+}
+    .text-block span.highlight2{
+        font-size: 0.9rem;
+        padding: 15px;
+    }
+
+.for-text {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #E1D5AA!important;
+}
+
+
+    .me {
+        font-size: 0.9rem;
+        padding: 15px;
+    }
+
+    .card {
+        width: 80px;
+        height: 120px;
+    }
+
+    .card img {
+        width: 80px;
+        height: 50px;
+    }
+
+    .text-block {
+        font-size: 0.9rem;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 420px) {
+    .headline h1, .headline p {
+        font-size: 2rem;
+        color:black;
+    }
+
+
+.for-text {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #E1D5AA!important;
+}
+.text-block span.highlight2 {
+    font-family: 'Pinyon Script', sans-serif;
+    color:  #E1D5AA;
+    font-size: 25px;
+}
+
+    .text-block {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards; 
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+</style>
+{% endblock %}
+
+{% block body %}
+    <div class="headline-container show-text">
+        <h1 class="close-letters">DEVELOPPEUSE WEB FULL STACK</h1>
+        <p class="for-text close-letters">spécialisée</p>
+        <h1 class="close-letters">SYMFONY/REACT</h1>
+        <h1 class="close-letters">à MONTPELLIER</h1>
+     
+    </div>
+
+
+    <div class="image-container">
+        <img src="{{ asset('images/lol.png') }}" alt="Image du Projet 4">
+    </div>
+
+    <div class="text-block headline show-text">
+        <h1>À PROPOS</h1>
+        <p class="for-text">de moi</p>
+    </div>
+
+    <div class="text-block show-text">
+        <p class="me">
+            Bienvenue sur mon portfolio ! Je m'appelle VALERIA, et
+            je suis une développeuse web full-stack passionnée,
+            titulaire d'un Bac+2 en informatique. Depuis que j'ai découvert le monde du développement, j'ai été captivée par la possibilité de créer
+            <span class="highlight2">des expériences numériques à la fois belles et fonctionnelles.</span>
+            Chaque projet est pour moi une opportunité de repousser les limites de <span class="highlight2">ma créativité et de mes compétences techniques.</span>
+        </p>
+    </div>
+
+    <div class="text-block headline show-text">
+        <h1>MON</h1>
+        <p class="for-text">Parcours</p>
+        <a href="{{ asset('cv/CV-VALERIA-BEREK.pdf') }}" class="download-cv" download>Télécharger</a>
+    </div>
+
+    <div class="text-block show-text">
+        <p class="text">
+            Au fil de ma formation et de mes expériences, j'ai acquis une solide maîtrise des technologies front-end et back-end. Côté front-end, j'aime particulièrement travailler avec React pour concevoir des interfaces utilisateur dynamiques et réactives. J'apprécie le défi de transformer des maquettes en véritables œuvres interactives, tout en veillant à ce que chaque détail soit soigné et que l'expérience utilisateur soit optimale.
+        </p>
+        <p class="text">
+            En parallèle, le back-end occupe une place spéciale dans mon cœur. J'adore plonger dans la complexité de Symfony, construire des architectures robustes et assurer la gestion efficace des données. C'est un domaine où la logique et la rigueur sont essentielles, et c'est précisément ce qui me motive à toujours chercher des solutions élégantes et performantes.
+        </p>
+    </div>
+
+    <div class="text-block headline show-text">
+        <p class="for-text">mes</p>
+        <h1>OBJECTIFS</h1>
+    </div>
+
+    <div class="text-block show-text">
+        <p class="text">
+            Aujourd'hui, je suis à la recherche d'une <strong>alternance</strong> qui me permettra de continuer à apprendre et à évoluer dans un environnement stimulant. Mon objectif est de consolider mes connaissances en développement tout en participant activement à des projets réels. Je suis particulièrement intéressée par les opportunités où je pourrais allier mes compétences en front et back-end, et contribuer à toutes les étapes de la création d'un produit numérique.
+        </p>
+    </div>
+
+    <div class="text-block headline show-text">
+        <h1>TRAVAILLONS</h1>
+        <p class="for-text">ensemble !</p>
+    </div>
+
+    <div class="text-block show-text">
+        <p class="text">
+            Si vous êtes à la recherche d'un développeur polyvalent, créatif et déterminé, capable de relever des défis techniques tout en gardant à l'esprit l'expérience utilisateur, n'hésitez pas à me contacter. Je suis prête à m'investir pleinement dans une entreprise qui me permettra de grandir et d'apporter ma touche unique à chaque projet.
+        </p>
+    </div>
+
+    
+
+    <div class="text-block headline show-text">
+        <h1>COME</h1>
+        <p class="for-text">say</p>
+        <h1>HELLO</h1><div class="social-icons">
+        <a href="https://www.linkedin.com/in/valeria-berek-539816257" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/valeriaberek" target="_blank" title="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+         
+            const rotatingCircleText = document.getElementById('rotatingCircleText');
+            const text = rotatingCircleText.innerText.split('');
+            rotatingCircleText.innerHTML = '';
+
+            const radius = 30;
+            const angleStep = 360 / text.length;
+
+            text.forEach((char, i) => {
+                const span = document.createElement('span');
+                span.innerText = char;
+                const angle = i * angleStep;
+                span.style.transform = `rotate(${angle}deg) translateY(-${radius}px) rotate(-${angle}deg)`;
+                rotatingCircleText.appendChild(span);
+            });
+
+           
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show-text');
+                    } else {
+                        entry.target.classList.remove('show-text');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.headline, .text-block').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+{% endblock %}
